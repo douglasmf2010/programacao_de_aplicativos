@@ -1,0 +1,43 @@
+Paragrafos.js:
+
+import React from "react";
+import "../css/Paragrafo.css";
+
+export default function paragrafo() {
+  return <p className="estilo1">Tudo bem?</p>;
+}
+
+Subtitulo.js:
+
+import React from "react";
+
+export default function Subtitulo() {
+  return <h2 className="estilo2">Como vai?</h2>;
+}
+
+Titulos.js:
+
+import React from "react";
+
+export default function Titulos() {
+  return <h1 className="estilo3">oi mundo</h1>;
+}
+5;
+
+Paragrafos.css:
+
+.estilo1 {
+  text-align: center;
+  color: green;
+  background-color: pink;
+}
+.estilo2 {
+  text-align: center;
+  color: blue;
+  background-color: brown;
+}
+.estilo3 {
+  text-align: center;
+  color: white;
+  background-color: black;
+}
