@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #tabela {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f5f5f5;
+        }
+        
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px 0;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #tela_cadastro {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 300px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="cadatro">
+            <button id="cadastro" onclick="botao_cadastro()">cadastrar produto</button>
+        </div>
+        <br>
+        <div id="tela_cadastro">
+            <input type="text" placeholder="Nome" id="nome">
+            <br>
+            <input type="text" placeholder="Preço" id="preco">
+            <br>
+            <input type="text" placeholder="quantidade" id="quantidade">
+            <br>
+            <button id="salvar" onclick="salvar()">salvar</button>
+            <button id="cancelar" onclick="cancelar()">cancelar</button>
+        </div>
+        <br>
+        <div id="tabela">
+            <table border="1">
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Valor total</th>
+                    <th>Ações</th>
+                </tr>
+                <tbody id="corpo"></tbody>
+            </table>
+        </div>
+        <script>
+            let nomes = []
+            let precos = []
+            let quantidades = []
+
+            let nome = document.getElementById("nome")
+            let preco = document.getElementById("preco")
+            let quantidade = document.getElementById("quantidade")
+
+            document.getElementById("tela_cadastro").classList.add("hidden")
+            document.getElementById("tabela").classList.add("hidden")
+
+            function botao_cadastro() {
+                document.getElementById("tela_cadastro").classList.remove("hidden")
+            }
+            function salvar() {
+                document.getElementById("tabela").classList.remove("hidden")
+
+                nomes.push(nome.value)
+                precos.push(preco.value)
+                quantidades.push(quantidade.value)
+
+                corpo.innerHTML = ""; // Limpa a tabela antes de adicionar os dados novamente
+
+            for(let i = 0; i < nomes.length; i++){
+                let linha = document.createElement("tr")
+                linha.innerHTML = `
+                    <td>${nomes[i]}</td>
+                    <td>${precos[i]}</td>
+                    <td>${quantidades[i]}</td>
+                `
+
+                corpo.appendChild(linha)
+            }
+            nome.value = ""
+            preco.value = ""
+            quantidade.value = ""
+
+            document.getElementById("tela_cadastro").classList.add("hidden")
+            }
+        
+            function cancelar() {
+                document.getElementById("tela_cadastro").classList.add("hidden")
+                nome.value = ""
+                preco.value = ""
+                quantidade.value = ""
+            }
+        </script>
+    </div>
+</body>
+</html>
